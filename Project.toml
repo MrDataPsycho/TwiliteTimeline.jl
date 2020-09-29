@@ -1,7 +1,10 @@
 name = "TwiliteTimeline"
 uuid = "e840c479-728b-4aa1-8e51-d6f149480f58"
 authors = ["Data Psycho"]
-version = "0.1.0"
+version = "0.1.1"
+
+[deps]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
 julia = "1.1"
