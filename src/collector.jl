@@ -1,7 +1,6 @@
 using OAuth, JSON
 
 const USER_TIMELINE = "https://api.twitter.com/1.1/statuses/user_timeline.json"
-const BOOLEAN_FIELDS = ["trim_user", "exclude_replies"]
 
 """
     Authentictor (Datatype:TwiliteTimeline)
@@ -51,8 +50,8 @@ struct ResourceParams
     since_id::Union{Integer, Nothing}
     count::Union{Integer, Nothing}
     max_id::Union{Integer, Nothing}
-    trim_user::Union{Integer, Nothing}
-    exclude_replies::Union{Integer, Nothing}
+    trim_user::Union{Bool, Nothing}
+    exclude_replies::Union{Bool, Nothing}
 
     # Custom Constructor for the Type Signature
     ResourceParams(
@@ -61,27 +60,13 @@ struct ResourceParams
         science_id = nothing,
         count=1,
         max_id=nothing,
-        trim_user=0,
-        exclude_replies=1,
+        trim_user=false,
+        exclude_replies=true,
     ) = (
     count isa Integer && count < 1
     ? error("Count must have to be greter than or equal to 1")
     : new(screen_name, user_id, science_id, count, max_id, trim_user, exclude_replies)
     )
-end
-
-"""
-    check_boolean_values(fn::String, fv::Integer)
-
-Check if the user provided boolean values is 1 or 0. Otherwise suggest user to provide required values.
-"""
-function check_boolean_values(fn::String, fv::Integer)
-    if fv != 1 && fv != 0
-        error(
-            "Boolean field value $fn mush have to be 1 or 0. " *
-            "Please Redefine the field value of the object with 1 or 0."
-        )
-    end
 end
 
 """
@@ -95,10 +80,11 @@ function params_to_dict(rp::ResourceParams)
         fv = getfield(rp, fn)
         if fv |> !isnothing
             fn_str = string(fn)
-            if fn_str in BOOLEAN_FIELDS
-                check_boolean_values(fn_str, fv)
+            if fv isa Bool
+                params[fn_str] = string(fv)
+            else
+                params[fn_str] = fv
             end
-            params[fn_str] = fv
         end
     end
     if haskey(params, "count")
