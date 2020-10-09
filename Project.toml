@@ -1,9 +1,11 @@
 name = "TwiliteTimeline"
 uuid = "e840c479-728b-4aa1-8e51-d6f149480f58"
 authors = ["Data Psycho"]
-version = "0.1.1"
+version = "0.1.2"
 
 [deps]
+JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+OAuth = "22d8b318-f366-56fb-a292-a93f7d76c017"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
