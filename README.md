@@ -10,23 +10,35 @@ TwiliteTimeline is a twitter API client, which is capable of querying the Twitte
 ## Use Case & Example:
 The current version of the App has limited feature which will be improved in future updates. Each new feature will be introduced with elaborate examples.
 
-To be able to use the package first user need their OAuth tokens and secrets which can be created after log in to twitter devloper account by ceate a new app. Then using the `Authentictor` and `ResourceParams` type provided by the package they need to define values of that type and finally use the `collect_tweets` methods to query the API.
+To be able to use the package first user need their OAuth tokens and secrets which can be created after log in to twitter developer account by creating a new app. Then using the `Authentictor` and `ResourceParams` type provided by the package they need to define values of that type and finally use the `collect_tweets` methods to query the API.
 
-- Authentictor is a julia concrete type to store the Consumer Key, Consumer Secret, OAuth Token and OAuth Token from twitter api. It is recommended that user
-save them into environment and load them by using `ENV` keyword.
-- The ResourceParams concrete type is to store the Parametes needed to query the API and based on the [API document version 1.1](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-user_timeline). The default values in the package are sometime different than the API document. By default the `trim_user` is set to `false`, when providing any valid count parameter the `include_rts` will be set to `true` silintly.
+- Authentictor is a julia concrete type to store the Consumer Key, Consumer Secret, OAuth Token and OAuth Token from twitter API. It is recommended that user save them into environment and load them by using `ENV` keyword.
+- The ResourceParams concrete type is to store the Parameters needed to query the API and based on the [API document version 1.1](https://developer.twitter.com/en/docs/twitter-api/v1/tweets/timelines/api-reference/get-statuses-user_timeline). The default values in the package are sometime different than the API document. By default the `trim_user` is set to `false`, when providing any valid count parameter the `include_rts` will be set to `true` silently.
 
-Use Case 1: Get latest 100 tweets from a Profile
+### Use Case 1: Get latest 100 tweets from a Profile
 In the following example the all credentials is saved as environment variable and later loaded from ENV dictionary.
 
 ```julia
 # Create value of type Authentictor
 creds = Authentictor(ENV["CKEY"], ENV["CSEC"], ENV["OTOK"], ENV["OSEC"])
 # Create Value of Type ResourceParams
-rps = ResourceParams('realDonaldTrump', count=100)
+rps = ResourceParams("Viral_B_Shah", count=100)
 
 # Call The Twitter API
 tweets = collect_tweets(creds, rps)
 ```
 
+### Use Case 2: Get latest 5 tweets with Excluding Replies and Trim User Data
+The field `trim_user` and `exclude_replies` decides that if we want to exclude user data and  exclude replies when fetching the data or not.
+
+```
+# Create value of type Authentictor
+creds = Authentictor(ENV["CKEY"], ENV["CSEC"], ENV["OTOK"], ENV["OSEC"])
+
+# Create Value of Type ResourceParams
+rps = ResourceParams("tomkwong", count=5, trim_user=true, exclude_replies=true)
+
+# Call The Twitter API
+tweets = collect_tweets(creds, rps)
+```
 The data return as list/array of dictionary, were each dictionary object is a Tweet.

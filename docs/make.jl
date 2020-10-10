@@ -1,3 +1,5 @@
+# using Pkg
+# pkg"activate .."
 using TwiliteTimeline
 using Documenter
 

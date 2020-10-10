@@ -37,11 +37,11 @@ To be able to use twitter API the fild value shoud satisfy the following criteri
 # Example
 ```
 julia> resource_params = ResourceParams("realDonaldTrump", count=100)
-ResourceParams("realDonaldTrump", nothing, nothing, 100, nothing, 0, 1)
+ResourceParams("realDonaldTrump", nothing, nothing, 100, nothing, false, true)
 
 
-julia> resource_params = ResourceParams("realDonaldTrump", count=100, exclude_replies=0)
-ResourceParams("realDonaldTrump", nothing, nothing, 100, nothing, 0, 0)
+julia> resource_params = ResourceParams("realDonaldTrump", count=100, exclude_replies=true)
+ResourceParams("realDonaldTrump", nothing, nothing, 100, nothing, false, true)
 ```
 """
 struct ResourceParams
