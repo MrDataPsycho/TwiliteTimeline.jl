@@ -85,11 +85,6 @@ uuid = "6462fe0b-24de-5631-8697-dd941f90decc"
 deps = ["Distributed", "InteractiveUtils", "Logging", "Random"]
 uuid = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
-[[TwiliteTimeline]]
-path = ".."
-uuid = "e840c479-728b-4aa1-8e51-d6f149480f58"
-version = "0.1.0"
-
 [[UUIDs]]
 deps = ["Random", "SHA"]
 uuid = "cf7118a7-6976-5b1a-9a39-7adc72f591a4"

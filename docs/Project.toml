@@ -1,3 +1,5 @@
 [deps]
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
-TwiliteTimeline = "e840c479-728b-4aa1-8e51-d6f149480f58"
+
+[compat]
+Documenter = "~0.25"
