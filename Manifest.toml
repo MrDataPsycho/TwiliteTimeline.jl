@@ -31,7 +31,7 @@ uuid = "b77e0a4c-d291-57a0-90e8-8db25a27a240"
 deps = ["Dates", "Mmap", "Parsers", "Unicode"]
 git-tree-sha1 = "81690084b6198a2e1da36fcfda16eeca9f9f24e4"
 uuid = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
-version = "0.21.1"
+version = "~0.21.1"
 
 [[LibGit2]]
 deps = ["Printf"]
@@ -66,7 +66,7 @@ uuid = "a63ad114-7e13-5084-954f-fe012c677804"
 deps = ["Base64", "HTTP", "MbedTLS", "Random"]
 git-tree-sha1 = "3d9e7e347195527b60491ee6e368f4b8b1947411"
 uuid = "22d8b318-f366-56fb-a292-a93f7d76c017"
-version = "1.0.0"
+version = "~1.0.0"
 
 [[Parsers]]
 deps = ["Dates", "Test"]
