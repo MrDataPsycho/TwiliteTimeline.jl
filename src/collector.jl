@@ -1,5 +1,4 @@
-using OAuth, JSON
-
+"""User Timeline Endpoint as constant"""
 const USER_TIMELINE = "https://api.twitter.com/1.1/statuses/user_timeline.json"
 
 """
