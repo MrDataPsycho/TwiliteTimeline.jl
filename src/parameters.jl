@@ -5,10 +5,6 @@ ApiParams is a abstruct type for any parameter subtype. So Any subtype of ApiPar
 """
 abstract type Params end
 
-# params_to_dict(p::Params) = error("Parameter to Dict method is not defined in concrete type.")
-
-
-
 """
     ParamsGetTweets(ConcreteType: TwiliteTimeline)
 
@@ -54,17 +50,17 @@ struct ParamsGetTweets <: Params
 end
 
 """
-    ParamsPostTweet(ConcreteType: ParamsPostTweet)
+    ParamsPostTweet(ConcreteType: TwiliteTimeline)
 
 ParamsPostTweet is a defined datatype to store the Resource Parameter mentioned in the twitter API document which we have to send when qurying the API in the request body.
 
-The status field is a mandatory field and rest of the field is set according to twitter api doc with default values. There is a lot of condition implied when using optional fields os it is suggested that use should first see the twitter version 1 api doc.
+The status field is a mandatory field and rest of the field is set according to twitter api doc with default values. There is a lot of condition implied when using optional fields so it is suggested that use should first see the twitter version 1 api doc statuses/update.json.
 
 # Example
 
 ```
-julia> test = ParamsPostTweet("asdf asdf asdf.")
-ParamsPostTweet("asdf asdf asdf.", nothing, false, nothing, nothing, nothing, false, nothing, nothing, nothing, nothing, false, false, true, nothing)
+julia> test = ParamsPostTweet("asdf asdf asdf a test tweet.")
+ParamsPostTweet("asdf asdf asdf a test tweet.", nothing, false, nothing, nothing, nothing, false, nothing, nothing, nothing, nothing, false, false, true, nothing)
 
 
 ```
@@ -124,14 +120,14 @@ struct ParamsPostTweet <: Params
 end
 
 """
-    params_to_dict(rp::ResourceParams)
+    params_to_dict(p::T) where {T <: Params}
 
 Is a internal function to convert the user provided Twitter API parameter into dictionary which `oauth_request_resource` from `OAuth` package expect. The method silently add `include_rts` paramater value to 1 when providing an valid `count paramter`.
 """
-function params_to_dict(rp::T) where {T <: Params}
+function params_to_dict(p::T) where {T <: Params}
     params = Dict{String, Union{String, Integer, Float32}}()
     for fn in fieldnames(T)
-        fv = getfield(rp, fn)
+        fv = getfield(p, fn)
         if fv |> !isnothing
             fn_str = string(fn)
             if fv isa Bool

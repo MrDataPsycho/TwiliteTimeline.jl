@@ -20,9 +20,9 @@ using Test
     end
     # @testset "Test for collect_tweets" begin
     #     creds = Authentictor(ENV["CKEY"], ENV["CSEC"], ENV["OTOK"], ENV["OSEC"]);
-    #     params = ResourceParams("realDonaldTrump", count=100);
+    #     params = ResourceParams("rustlang", count=2);
     #     tweets = collect_tweets(creds, params)
-    #     println(tweets)
+    #     @test length(tweets) > 0
     # end
 end
 
@@ -52,7 +52,7 @@ end
 #
 #     @testset "Test for post_tweet" begin
 #         creds = Authentictor(ENV["CKEY"], ENV["CSEC"], ENV["OTOK"], ENV["OSEC"]);
-#         params = ParamsPostTweet("... asdf asdf test tweet .... @JuliaLanguage using TwiliteTimeline.jl");
+#         params = ParamsPostTweet("... asdf asdf test tweet using TwiliteTimeline.jl");
 #         tweet = post_tweet(creds, params);
 #         @test strip(tweet["text"]) == strip(params.status)
 #     end

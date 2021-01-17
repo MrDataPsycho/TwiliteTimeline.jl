@@ -108,6 +108,7 @@ julia> tweets = collect_tweets(creds, resource_params);
 That should return 100 latest tweets from the profile @realDonaldTrump.
 """
 function collect_tweets(a::Authentictor, rp::ResourceParams)
+     @warn "use get_tweets method instead, that method will be removed in 1.3 release. Read more details in the readme file."
     # paramter convertion to dictionary
     params = params_to_dict(rp)
     # Response Object

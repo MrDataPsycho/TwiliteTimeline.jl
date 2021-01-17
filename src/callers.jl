@@ -4,9 +4,9 @@ const URL_SUFFIX = ".json"
 
 
 """
-    collect_tweets(a::Authentictor, p::ParamsGetTweet)
+    get_tweets(a::Authentictor, p::ParamsGetTweet)
 
-Try to collect tweets based on given object of type Autenticator and ResourceParams. The `collect_tweets` is a wrapper around the `oauth_request_resource` method from `OAuth` package which is responsible for sending the `get` request to the `statuses/user_timeline`.
+Try to collect tweets based on given object of type Autenticator and ParamsGetTweet. The `get_tweets` is a wrapper around the `oauth_request_resource` method from `OAuth` package which is responsible for sending the `get` request to the `statuses/user_timeline.json`.
 
 # Example
 ```
@@ -41,9 +41,9 @@ function get_tweets(a::Authentictor, p::ParamsGetTweets)
 end
 
 """
-    post_tweet(a::Authentictor, p::ResourceParams)
+    post_tweet(a::Authentictor, p::ParamsPostTweet)
 
-Try to collect tweets based on given object of type Autenticator and ResourceParams. The `collect_tweets` is a wrapper around the `oauth_request_resource` method from `OAuth` package which is responsible for sending the `get` request to the `statuses/user_timeline`.
+Try to collect tweets based on given object of type Autenticator and ParamsPostTweet. The `post_tweet` is a wrapper around the `oauth_request_resource` method from `OAuth` package which is responsible for sending the `get` request to the `statuses/update.json`.
 
 # Example
 ```
