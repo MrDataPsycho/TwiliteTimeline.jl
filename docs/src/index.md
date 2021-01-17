@@ -4,7 +4,7 @@ CurrentModule = TwiliteTimeline
 
 # TwiliteTimeline
 
-TwiliteTimeline is a twitter API client, which is capable of querying the Twitter `statuses/user_timeline` and `statuses/update.json` endpoint. __The current version of the package only valid for Twitter API version 1.1__
+TwiliteTimeline is a twitter API client, which is capable of querying the Twitter `statuses/user_timeline` and `statuses/update` endpoint. __The current version of the package only valid for Twitter API version 1.1__
 
 ## Use Case & Example:
 The current version of the App has limited feature which will be improved in future updates. Each new feature will be introduced with elaborate examples. The current version has introduced new feature, now you can post tweet using TwiliteTimeline. But the design also changed along the way and old usecase examples are deprecated. Please follow new use cases to know more.
